@@ -1,0 +1,1769 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FriendMatch ❤️ | Ultimate Friendship & Love Fun</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --pink:#ff4f91;
+    --purple:#7c3aed;
+    --blue:#4f46e5;
+    --dark:#16002b;
+    --card:#ffffff;
+    --text:#18181b;
+    --muted:#71717a;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 10% 10%,#ff5c9d 0,transparent 30%),
+        radial-gradient(circle at 90% 90%,#5146e5 0,transparent 30%),
+        linear-gradient(135deg,#120020,#210044,#06183f);
+    color:var(--text);
+    padding:20px;
+    overflow-x:hidden;
+    transition:.4s;
+}
+
+body.dark{
+    --card:#171525;
+    --text:#f8f8ff;
+    --muted:#b7b4c7;
+    background:
+        radial-gradient(circle at 10% 10%,#5c1740 0,transparent 30%),
+        radial-gradient(circle at 90% 90%,#25206d 0,transparent 30%),
+        #080711;
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    background:rgba(255,255,255,.07);
+    filter:blur(15px);
+    z-index:-1;
+    animation:float 7s infinite ease-in-out;
+}
+
+body::before{
+    top:-100px;
+    left:-100px;
+}
+
+body::after{
+    right:-100px;
+    bottom:-100px;
+    animation-delay:2s;
+}
+
+@keyframes float{
+    50%{
+        transform:translate(30px,-25px);
+    }
+}
+
+.container{
+    width:100%;
+    max-width:650px;
+    margin:auto;
+    background:rgba(255,255,255,.96);
+    border-radius:32px;
+    padding:25px;
+    box-shadow:0 30px 80px rgba(0,0,0,.45);
+    transition:.4s;
+}
+
+.dark .container{
+    background:rgba(23,21,37,.97);
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+    margin-bottom:18px;
+}
+
+.topLogo{
+    font-size:18px;
+    font-weight:bold;
+    color:var(--pink);
+}
+
+.topActions{
+    display:flex;
+    gap:7px;
+}
+
+.iconBtn{
+    width:42px;
+    height:42px;
+    padding:0;
+    margin:0;
+    border-radius:13px;
+    background:#f3efff;
+    color:#6d28d9;
+    font-size:18px;
+}
+
+.dark .iconBtn{
+    background:#29263c;
+    color:#ddd6fe;
+}
+
+.screen{
+    animation:appear .45s ease;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.logo{
+    width:95px;
+    height:95px;
+    margin:10px auto 15px;
+    border-radius:30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:50px;
+    background:linear-gradient(135deg,var(--pink),var(--purple));
+    box-shadow:0 15px 35px rgba(124,58,237,.3);
+    animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+    50%{transform:scale(1.07)}
+}
+
+h1{
+    text-align:center;
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,var(--pink),var(--purple));
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.subtitle{
+    text-align:center;
+    color:var(--muted);
+    line-height:1.55;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:16px;
+    border:2px solid #eeeef3;
+    border-radius:15px;
+    margin:6px 0;
+    outline:none;
+    font-size:16px;
+    background:#fafafa;
+    color:#222;
+}
+
+.dark input{
+    background:#242235;
+    border-color:#39354d;
+    color:white;
+}
+
+input:focus{
+    border-color:var(--pink);
+}
+
+button{
+    width:100%;
+    border:0;
+    border-radius:15px;
+    padding:15px;
+    margin-top:9px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+.primary{
+    color:white;
+    background:linear-gradient(135deg,var(--pink),var(--purple));
+    box-shadow:0 10px 25px rgba(124,58,237,.25);
+}
+
+.secondary{
+    color:#6d28d9;
+    background:#f1edff;
+}
+
+.dark .secondary{
+    background:#2b2740;
+    color:#ddd6fe;
+}
+
+.feature{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:7px;
+    margin:17px 0;
+}
+
+.feature span{
+    background:#f5f0ff;
+    color:#6d28d9;
+    padding:8px 11px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.dark .feature span{
+    background:#29263c;
+    color:#ddd6fe;
+}
+
+.menuTitle{
+    text-align:center;
+    margin:10px 0 15px;
+    color:var(--muted);
+}
+
+.menuGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.menuCard{
+    border:1px solid #eee;
+    border-radius:18px;
+    padding:18px 10px;
+    background:#fafafa;
+    cursor:pointer;
+    transition:.25s;
+    text-align:center;
+}
+
+.dark .menuCard{
+    background:#242235;
+    border-color:#39354d;
+}
+
+.menuCard:hover{
+    transform:translateY(-4px);
+    border-color:var(--pink);
+}
+
+.menuIcon{
+    font-size:28px;
+    margin-bottom:7px;
+}
+
+.menuName{
+    font-weight:bold;
+}
+
+.menuSmall{
+    font-size:11px;
+    color:var(--muted);
+    margin-top:4px;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* QUIZ */
+
+.quizTop{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:9px;
+}
+
+.questionNumber{
+    color:var(--purple);
+    font-weight:bold;
+}
+
+.percent{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.progress{
+    width:100%;
+    height:9px;
+    background:#eee;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:24px;
+}
+
+.progressFill{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,var(--pink),var(--purple));
+    transition:.4s;
+}
+
+.question{
+    font-size:22px;
+    line-height:1.45;
+    font-weight:bold;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.option{
+    text-align:left;
+    background:#fafafa;
+    color:#333;
+    border:2px solid #eeeef3;
+}
+
+.dark .option{
+    background:#242235;
+    color:white;
+    border-color:#39354d;
+}
+
+.option:hover{
+    border-color:var(--pink);
+    background:#fff0f6;
+}
+
+/* FEATURE PAGES */
+
+.pageTitle{
+    text-align:center;
+    margin:10px 0 8px;
+}
+
+.pageText{
+    color:var(--muted);
+    text-align:center;
+    line-height:1.5;
+    margin-bottom:18px;
+}
+
+.bigResult{
+    border-radius:22px;
+    padding:24px;
+    text-align:center;
+    background:linear-gradient(135deg,#fff0f6,#f0ebff);
+    color:#27202d;
+    margin:15px 0;
+    min-height:120px;
+}
+
+.dark .bigResult{
+    background:linear-gradient(135deg,#322035,#24224b);
+    color:white;
+}
+
+.bigEmoji{
+    font-size:48px;
+    margin-bottom:8px;
+}
+
+.bigNumber{
+    font-size:48px;
+    font-weight:bold;
+    color:var(--pink);
+}
+
+.story{
+    text-align:left;
+    line-height:1.8;
+    font-size:16px;
+}
+
+.quote{
+    font-size:20px;
+    line-height:1.6;
+    font-weight:bold;
+}
+
+.wheel{
+    width:190px;
+    height:190px;
+    border-radius:50%;
+    margin:20px auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:48px;
+    background:
+        conic-gradient(
+            #ff4f91 0 45deg,
+            #7c3aed 45deg 90deg,
+            #4f46e5 90deg 135deg,
+            #f59e0b 135deg 180deg,
+            #10b981 180deg 225deg,
+            #ef4444 225deg 270deg,
+            #ec4899 270deg 315deg,
+            #6366f1 315deg 360deg
+        );
+    box-shadow:0 15px 30px rgba(0,0,0,.2);
+    transition:2s cubic-bezier(.17,.67,.12,.99);
+}
+
+.wheel span{
+    width:90px;
+    height:90px;
+    background:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:35px;
+}
+
+.dark .wheel span{
+    background:#171525;
+}
+
+.surprise{
+    min-height:180px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    border:2px dashed #ff8bb5;
+    border-radius:22px;
+    padding:20px;
+}
+
+.resultScore{
+    width:175px;
+    height:175px;
+    margin:18px auto;
+    border-radius:50%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:
+        radial-gradient(circle,#fff 62%,transparent 63%),
+        conic-gradient(var(--pink) 0deg,var(--purple) 280deg,#eee 280deg);
+}
+
+.dark .resultScore{
+    background:
+        radial-gradient(circle,#171525 62%,transparent 63%),
+        conic-gradient(var(--pink) 0deg,var(--purple) 280deg,#333 280deg);
+}
+
+.resultScore strong{
+    font-size:45px;
+    color:var(--purple);
+}
+
+.dark .resultScore strong{
+    color:#c4b5fd;
+}
+
+.resultScore small{
+    color:var(--muted);
+}
+
+.footer{
+    text-align:center;
+    margin-top:20px;
+    color:#aaa;
+    font-size:12px;
+}
+
+.backBtn{
+    margin-bottom:12px;
+}
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%) translateY(80px);
+    background:#18181b;
+    color:white;
+    padding:13px 18px;
+    border-radius:30px;
+    opacity:0;
+    transition:.3s;
+    z-index:100;
+    font-size:14px;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}
+
+.hearts{
+    position:fixed;
+    pointer-events:none;
+    font-size:22px;
+    animation:heartFly 2s linear forwards;
+    z-index:50;
+}
+
+@keyframes heartFly{
+    from{
+        transform:translateY(0) scale(1);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-180px) scale(1.7);
+        opacity:0;
+    }
+}
+
+@media(max-width:520px){
+    body{
+        padding:10px;
+    }
+
+    .container{
+        padding:18px;
+        border-radius:24px;
+    }
+
+    h1{
+        font-size:29px;
+    }
+
+    .menuGrid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .question{
+        font-size:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="topbar">
+    <div class="topLogo">❤️ FriendMatch</div>
+
+    <div class="topActions">
+        <button class="iconBtn" onclick="toggleDark()">🌙</button>
+        <button class="iconBtn" onclick="heartRain()">💖</button>
+    </div>
+</div>
+
+
+<!-- HOME -->
+
+<div id="home" class="screen">
+
+    <div class="logo">❤️</div>
+
+    <h1>
+        <span class="gradient">FriendMatch</span>
+    </h1>
+
+    <p class="subtitle">
+        Friendship, crush, love vibes aur fun features —
+        sab ek hi jagah! ✨
+    </p>
+
+    <input id="name1" maxlength="25"
+           placeholder="👤 First person's name">
+
+    <input id="name2" maxlength="25"
+           placeholder="👥 Second person's name">
+
+    <button class="primary" onclick="startQuiz()">
+        🎯 Start 7 Question Quiz
+    </button>
+
+    <div class="feature">
+        <span>❤️ Love</span>
+        <span>💘 Crush</span>
+        <span>✨ 1100+ Questions</span>
+        <span>🎲 Random</span>
+    </div>
+
+    <div class="menuTitle">
+        Or explore a feature 👇
+    </div>
+
+    <div class="menuGrid">
+
+        <div class="menuCard" onclick="openPage('story')">
+            <div class="menuIcon">❤️</div>
+            <div class="menuName">Love Story</div>
+            <div class="menuSmall">Fun story generator</div>
+        </div>
+
+        <div class="menuCard" onclick="openPage('crush')">
+            <div class="menuIcon">💘</div>
+            <div class="menuName">Crush Meter</div>
+            <div class="menuSmall">Just for fun</div>
+        </div>
+
+        <div class="menuCard" onclick="openPage('message')">
+            <div class="menuIcon">💌</div>
+            <div class="menuName">Cute Message</div>
+            <div class="menuSmall">Make a message</div>
+        </div>
+
+        <div class="menuCard" onclick="openPage('quotes')">
+            <div class="menuIcon">🌹</div>
+            <div class="menuName">Quotes</div>
+            <div class="menuSmall">Random quote</div>
+        </div>
+
+        <div class="menuCard" onclick="openPage('funny')">
+            <div class="menuIcon">😂</div>
+            <div class="menuName">Funny Message</div>
+            <div class="menuSmall">Make someone laugh</div>
+        </div>
+
+        <div class="menuCard" onclick="openPage('wheel')">
+            <div class="menuIcon">🎡</div>
+            <div class="menuName">Spin Wheel</div>
+            <div class="menuSmall">Random choice</div>
+        </div>
+
+        <div class="menuCard" onclick="openPage('surprise')">
+            <div class="menuIcon">🎁</div>
+            <div class="menuName">Surprise Box</div>
+            <div class="menuSmall">Open your surprise</div>
+        </div>
+
+        <div class="menuCard" onclick="openPage('personality')">
+            <div class="menuIcon">🎭</div>
+            <div class="menuName">Personality</div>
+            <div class="menuSmall">Fun personality</div>
+        </div>
+
+    </div>
+
+    <button class="secondary" onclick="showInfo()">
+        ℹ️ About FriendMatch
+    </button>
+
+    <div class="footer">
+        Made with ❤️ for friends • For fun only
+    </div>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div id="quiz" class="screen hidden">
+
+    <div class="logo">🤔</div>
+
+    <div class="quizTop">
+        <span id="qNumber" class="questionNumber">
+            Question 1 of 7
+        </span>
+
+        <span id="qPercent" class="percent">
+            14%
+        </span>
+    </div>
+
+    <div class="progress">
+        <div id="progressFill" class="progressFill"></div>
+    </div>
+
+    <div id="question" class="question"></div>
+
+    <div id="options"></div>
+
+</div>
+
+
+<!-- QUIZ RESULT -->
+
+<div id="quizResult" class="screen hidden">
+
+    <div class="logo">🏆</div>
+
+    <h1>
+        <span class="gradient">Your Result</span>
+    </h1>
+
+    <p id="resultNames" class="pageText"></p>
+
+    <div id="quizScore" class="resultScore">
+        <strong id="scoreNumber">0%</strong>
+        <small>Match Score</small>
+    </div>
+
+    <div id="badge" class="bigResult"></div>
+
+    <button class="primary" onclick="shareQuizResult()">
+        📤 Share Result
+    </button>
+
+    <button class="secondary" onclick="goHome()">
+        🏠 Back Home
+    </button>
+
+</div>
+
+
+<!-- LOVE STORY -->
+
+<div id="story" class="screen hidden">
+
+    <button class="secondary backBtn" onclick="goHome()">← Back</button>
+
+    <h1 class="pageTitle">❤️ Love Story</h1>
+
+    <p class="pageText">
+        Do names enter karo aur ek cute fictional story banao.
+    </p>
+
+    <input id="storyName1" placeholder="First name">
+    <input id="storyName2" placeholder="Second name">
+
+    <button class="primary" onclick="makeStory()">
+        ✨ Create Story
+    </button>
+
+    <div id="storyResult" class="bigResult hidden"></div>
+
+</div>
+
+
+<!-- CRUSH -->
+
+<div id="crush" class="screen hidden">
+
+    <button class="secondary backBtn" onclick="goHome()">← Back</button>
+
+    <h1 class="pageTitle">💘 Crush Meter</h1>
+
+    <p class="pageText">
+        Entertainment ke liye random compatibility score.
+        Ye kisi ke real feelings nahi batata.
+    </p>
+
+    <input id="crush1" placeholder="First name">
+    <input id="crush2" placeholder="Second name">
+
+    <button class="primary" onclick="crushMeter()">
+        💘 Calculate Fun Score
+    </button>
+
+    <div id="crushResult" class="bigResult hidden"></div>
+
+</div>
+
+
+<!-- MESSAGE -->
+
+<div id="message" class="screen hidden">
+
+    <button class="secondary backBtn" onclick="goHome()">← Back</button>
+
+    <h1 class="pageTitle">💌 Cute Message</h1>
+
+    <p class="pageText">
+        Ek simple, respectful aur cute message generate karo.
+    </p>
+
+    <input id="messageName" placeholder="Name">
+
+    <button class="primary" onclick="makeMessage()">
+        💌 Generate Message
+    </button>
+
+    <div id="messageResult" class="bigResult hidden"></div>
+
+    <button class="secondary hidden" id="copyMessage"
+            onclick="copyText('messageResult')">
+        📋 Copy Message
+    </button>
+
+</div>
+
+
+<!-- QUOTES -->
+
+<div id="quotes" class="screen hidden">
+
+    <button class="secondary backBtn" onclick="goHome()">← Back</button>
+
+    <h1 class="pageTitle">🌹 Random Quotes</h1>
+
+    <div id="quoteResult" class="bigResult">
+        <div class="bigEmoji">🌹</div>
+        <div class="quote">
+            Click the button and get a new quote.
+        </div>
+    </div>
+
+    <button class="primary" onclick="newQuote()">
+        ✨ New Quote
+    </button>
+
+    <button class="secondary" onclick="copyText('quoteResult')">
+        📋 Copy Quote
+    </button>
+
+</div>
+
+
+<!-- FUNNY -->
+
+<div id="funny" class="screen hidden">
+
+    <button class="secondary backBtn" onclick="goHome()">← Back</button>
+
+    <h1 class="pageTitle">😂 Funny Messages</h1>
+
+    <div id="funnyResult" class="bigResult">
+        <div class="bigEmoji">😂</div>
+        <div class="quote">
+            Ready for a random funny message?
+        </div>
+    </div>
+
+    <button class="primary" onclick="newFunny()">
+        😂 Make Me Laugh
+    </button>
+
+    <button class="secondary" onclick="copyText('funnyResult')">
+        📋 Copy
+    </button>
+
+</div>
+
+
+<!-- WHEEL -->
+
+<div id="wheel" class="screen hidden">
+
+    <button class="secondary backBtn" onclick="goHome()">← Back</button>
+
+    <h1 class="pageTitle">🎡 Spin Wheel</h1>
+
+    <p class="pageText">
+        Random fun choice!
+    </p>
+
+    <div id="wheelCircle" class="wheel">
+        <span>🎡</span>
+    </div>
+
+    <div id="wheelResult" class="bigResult">
+        Spin the wheel!
+    </div>
+
+    <button class="primary" onclick="spinWheel()">
+        🎡 SPIN
+    </button>
+
+</div>
+
+
+<!-- SURPRISE -->
+
+<div id="surprise" class="screen hidden">
+
+    <button class="secondary backBtn" onclick="goHome()">← Back</button>
+
+    <h1 class="pageTitle">🎁 Surprise Box</h1>
+
+    <div class="surprise" id="surpriseBox">
+        <div class="bigEmoji">🎁</div>
+        <p>What's inside?</p>
+    </div>
+
+    <button class="primary" onclick="openSurprise()">
+        🎁 Open Box
+    </button>
+
+</div>
+
+
+<!-- PERSONALITY -->
+
+<div id="personality" class="screen hidden">
+
+    <button class="secondary backBtn" onclick="goHome()">← Back</button>
+
+    <h1 class="pageTitle">🎭 Love Personality</h1>
+
+    <p class="pageText">
+        Choose your vibe for a fun personality result.
+    </p>
+
+    <button class="secondary" onclick="personality('quiet')">
+        🌙 Quiet & Thoughtful
+    </button>
+
+    <button class="secondary" onclick="personality('funny')">
+        😂 Funny & Energetic
+    </button>
+
+    <button class="secondary" onclick="personality('caring')">
+        ❤️ Caring & Supportive
+    </button>
+
+    <button class="secondary" onclick="personality('adventure')">
+        🌎 Adventure Lover
+    </button>
+
+    <div id="personalityResult" class="bigResult hidden"></div>
+
+</div>
+
+</div>
+
+
+<div id="toast" class="toast">Done ❤️</div>
+
+
+<script>
+
+/* =========================
+   BASIC SETTINGS
+========================= */
+
+let person1="";
+let person2="";
+let currentQuestion=0;
+let totalScore=0;
+
+const $ = id => document.getElementById(id);
+
+
+/* =========================
+   1100+ QUESTION ENGINE
+========================= */
+
+const subjects=[
+    "your friend",
+    "your crush",
+    "someone special",
+    "your best friend",
+    "the person you like",
+    "your close friend",
+    "your favourite person"
+];
+
+const situations=[
+    "is having a bad day",
+    "wins an important competition",
+    "forgets your birthday",
+    "sends you a funny message",
+    "needs someone to talk to",
+    "gets good marks",
+    "makes a funny mistake",
+    "shares good news",
+    "needs help with homework",
+    "invites you to hang out",
+    "does something unexpectedly kind",
+    "makes everyone laugh",
+    "is nervous before an event",
+    "achieves a big goal",
+    "asks for your opinion",
+    "has a difficult day"
+];
+
+const reactions=[
+    "What would you do?",
+    "How would you react?",
+    "What would you probably say?",
+    "What would be your first reaction?",
+    "How would you support them?",
+    "What would make the moment better?",
+    "What would you choose?"
+];
+
+const qualities=[
+    "trust",
+    "honesty",
+    "kindness",
+    "humour",
+    "respect",
+    "support",
+    "understanding",
+    "loyalty",
+    "good communication",
+    "patience",
+    "teamwork",
+    "friendship"
+];
+
+const activities=[
+    "watch a movie",
+    "play a game",
+    "talk for hours",
+    "go for a walk",
+    "share memes",
+    "study together",
+    "eat pizza",
+    "take funny photos",
+    "listen to music",
+    "play sports",
+    "visit a new place",
+    "have a long chat"
+];
+
+const places=[
+    "a park",
+    "a cafe",
+    "a school event",
+    "a game zone",
+    "a peaceful garden",
+    "a book shop",
+    "a fun fair",
+    "a sports ground",
+    "a favourite food place",
+    "a city viewpoint"
+];
+
+const templates=[
+    `If {subject} {situation}, {reaction}`,
+    `Which matters most in a strong friendship: {quality}?`,
+    `If you could {activity} with {subject}, would you choose it?`,
+    `What would be your perfect friendship activity at {place}?`,
+    `Would you rather {activity} or {activity2} with {subject}?`,
+    `What quality do you value most: {quality}?`,
+    `If {subject} invited you to {place}, what would you say?`,
+    `How important is {quality} when building a strong connection?`,
+    `If you had one free afternoon with {subject}, what would you do?`,
+    `Which is more fun: {activity} or {activity2}?`,
+    `What would make a friendship memorable?`,
+    `What makes a person easy to trust?`,
+    `What is the best way to support a friend?`,
+    `Which is more important: honesty or humour?`,
+    `What makes a great friendship last longer?`,
+    `How would you celebrate a friend's success?`,
+    `What is your favourite kind of friendly conversation?`,
+    `What makes someone a good listener?`,
+    `What is one thing every good friend should have?`,
+    `What creates the best memories with friends?`
+];
+
+let questionPool=[];
+
+function addQuestion(text){
+    questionPool.push({
+        question:text,
+        options:[
+            "Definitely ❤️",
+            "Maybe 😊",
+            "Not sure 😅",
+            "Probably not 🤔"
+        ]
+    });
+}
+
+templates.forEach(template=>{
+
+    subjects.forEach(subject=>{
+
+        situations.forEach(situation=>{
+
+            let text=template
+                .replace("{subject}",subject)
+                .replace("{situation}",situation)
+                .replace("{reaction}",randomItem(reactions))
+                .replace("{quality}",randomItem(qualities))
+                .replace("{activity}",randomItem(activities))
+                .replace("{activity2}",randomItem(activities))
+                .replace("{place}",randomItem(places));
+
+            addQuestion(text);
+
+        });
+
+    });
+
+});
+
+const extraQuestions=[
+    "What makes a friendship feel special?",
+    "Can a good friendship become stronger with time?",
+    "Is laughing together important?",
+    "Is trust more important than popularity?",
+    "Can small acts of kindness create great memories?",
+    "Is communication important in every friendship?",
+    "Do shared hobbies make friendships stronger?",
+    "Is being a good listener an important quality?",
+    "Can a simple message make someone's day better?",
+    "Is respect important between friends?",
+    "Can friends motivate each other to improve?",
+    "Are funny memories the best memories?",
+    "Is helping a friend a sign of strong friendship?",
+    "Can teamwork make friends closer?",
+    "Is honesty important even when the truth is difficult?"
+];
+
+extraQuestions.forEach(q=>addQuestion(q));
+
+while(questionPool.length<1100){
+    const q=extraQuestions[
+        questionPool.length%extraQuestions.length
+    ];
+
+    addQuestion(
+        q+" ✨ Question "+(questionPool.length+1)
+    );
+}
+
+function randomItem(arr){
+    return arr[Math.floor(Math.random()*arr.length)];
+}
+
+function shuffle(arr){
+    return arr.sort(()=>Math.random()-.5);
+}
+
+function getSevenQuestions(){
+    return shuffle([...questionPool]).slice(0,7);
+}
+
+let quizQuestions=[];
+
+
+/* =========================
+   HOME / NAVIGATION
+========================= */
+
+function hideAll(){
+
+    document.querySelectorAll(".screen")
+        .forEach(el=>el.classList.add("hidden"));
+}
+
+function openPage(id){
+
+    hideAll();
+    $(id).classList.remove("hidden");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+function goHome(){
+    hideAll();
+    $("home").classList.remove("hidden");
+}
+
+function showToast(message){
+
+    $("toast").innerText=message;
+    $("toast").classList.add("show");
+
+    setTimeout(()=>{
+        $("toast").classList.remove("show");
+    },2200);
+}
+
+
+/* =========================
+   QUIZ
+========================= */
+
+function startQuiz(){
+
+    person1=$("name1").value.trim();
+    person2=$("name2").value.trim();
+
+    if(!person1 || !person2){
+        showToast("Dono names enter karo ❤️");
+        return;
+    }
+
+    quizQuestions=getSevenQuestions();
+
+    currentQuestion=0;
+    totalScore=0;
+
+    openPage("quiz");
+    showQuestion();
+}
+
+function showQuestion(){
+
+    const q=quizQuestions[currentQuestion];
+    const number=currentQuestion+1;
+    const percent=Math.round((number/7)*100);
+
+    $("qNumber").innerText=
+        "Question "+number+" of 7";
+
+    $("qPercent").innerText=
+        percent+"%";
+
+    $("progressFill").style.width=
+        percent+"%";
+
+    $("question").innerText=
+        q.question;
+
+    $("options").innerHTML="";
+
+    const options=[
+        ...q.options
+    ];
+
+    options.forEach((option,index)=>{
+
+        const btn=document.createElement("button");
+
+        btn.className="option";
+        btn.innerText=option;
+
+        btn.onclick=()=>answerQuestion(index);
+
+        $("options").appendChild(btn);
+
+    });
+}
+
+function answerQuestion(index){
+
+    const scores=[
+        100,
+        75,
+        50,
+        25
+    ];
+
+    totalScore+=scores[index];
+
+    currentQuestion++;
+
+    if(currentQuestion<7){
+        showQuestion();
+    }else{
+        showQuizResult();
+    }
+}
+
+function showQuizResult(){
+
+    const score=Math.round(totalScore/7);
+
+    openPage("quizResult");
+
+    $("resultNames").innerText=
+        person1+" ❤️ "+person2;
+
+    $("scoreNumber").innerText=
+        score+"%";
+
+    let badge="";
+    let text="";
+
+    if(score>=90){
+        badge="🔥 Amazing Connection";
+        text="Aap dono ki friendship/vibe bohat strong lagti hai! Keep supporting each other. ❤️";
+    }
+    else if(score>=75){
+        badge="💖 Great Connection";
+        text="Nice! Aap dono mein achi understanding aur positive vibe hai. ✨";
+    }
+    else if(score>=55){
+        badge="😊 Good Vibe";
+        text="Achi friendship ban sakti hai. Saath time aur good conversations enjoy karo!";
+    }
+    else{
+        badge="🌱 New Connection";
+        text="Abhi aur ek doosre ko samajhne ka chance hai. Friendship time ke saath grow karti hai.";
+    }
+
+    $("badge").innerHTML=
+        `<div class="bigEmoji">${badge}</div>
+         <div>${text}</div>`;
+
+    const degrees=score*3.6;
+
+    $("quizScore").style.background=
+        `radial-gradient(circle,#fff 62%,transparent 63%),
+         conic-gradient(#ff4f91 0deg,#7c3aed ${degrees}deg,#eee ${degrees}deg)`;
+
+    if(document.body.classList.contains("dark")){
+        $("quizScore").style.background=
+        `radial-gradient(circle,#171525 62%,transparent 63%),
+         conic-gradient(#ff4f91 0deg,#7c3aed ${degrees}deg,#333 ${degrees}deg)`;
+    }
+
+    heartRain();
+}
+
+function shareQuizResult(){
+
+    const text=
+        `❤️ FriendMatch Result ❤️
+
+${person1} ❤️ ${person2}
+
+FriendMatch Score: ${$("scoreNumber").innerText}
+
+Try FriendMatch yourself! ✨`;
+
+    shareText(text);
+}
+
+
+/* =========================
+   LOVE STORY
+========================= */
+
+function makeStory(){
+
+    const a=$("storyName1").value.trim();
+    const b=$("storyName2").value.trim();
+
+    if(!a || !b){
+        showToast("Dono names likho ❤️");
+        return;
+    }
+
+    const places2=[
+        "school event",
+        "library",
+        "park",
+        "game zone",
+        "class project",
+        "fun fair"
+    ];
+
+    const activities2=[
+        "sharing funny jokes",
+        "helping each other",
+        "talking about future goals",
+        "sharing favourite songs",
+        "working on a project together",
+        "laughing over a silly mistake"
+    ];
+
+    const place=randomItem(places2);
+    const activity=randomItem(activities2);
+
+    $("storyResult").classList.remove("hidden");
+
+    $("storyResult").innerHTML=`
+        <div class="bigEmoji">❤️</div>
+        <div class="story">
+        <b>${a}</b> and <b>${b}</b> met at a
+        <b>${place}</b>. At first, they were simply
+        enjoying a normal day. Soon they discovered
+        that they both loved ${activity}. 🌟
+        <br><br>
+        As they talked more, they realised that good
+        friendship is built on kindness, respect and
+        laughter. Their little conversations became
+        some of their favourite memories.
+        <br><br>
+        And that was the beginning of a sweet,
+        fictional FriendMatch story. ✨
+        </div>
+    `;
+}
+
+
+/* =========================
+   CRUSH METER
+========================= */
+
+function crushMeter(){
+
+    const a=$("crush1").value.trim();
+    const b=$("crush2").value.trim();
+
+    if(!a || !b){
+        showToast("Dono names likho 💘");
+        return;
+    }
+
+    let seed=
+        a.toLowerCase()+b.toLowerCase();
+
+    let number=0;
+
+    for(let i=0;i<seed.length;i++){
+        number+=seed.charCodeAt(i)*(i+1);
+    }
+
+    const score=(number%51)+50;
+
+    $("crushResult").classList.remove("hidden");
+
+    $("crushResult").innerHTML=`
+        <div class="bigEmoji">💘</div>
+        <div class="bigNumber">${score}%</div>
+        <p>
+        ${a} & ${b} have a
+        <b>${score}% fun vibe score!</b>
+        </p>
+        <small>
+        Entertainment only — this does not measure real feelings.
+        </small>
+    `;
+}
+
+
+/* =========================
+   CUTE MESSAGE
+========================= */
+
+function makeMessage(){
+
+    const name=$("messageName").value.trim();
+
+    if(!name){
+        showToast("Name enter karo 💌");
+        return;
+    }
+
+    const messages=[
+        `Hey ${name}! 🌟 Tumhari friendship ki positive vibe hamesha smile le aati hai. Keep being awesome! ❤️`,
+        `${name}, good friends make normal days feel special. Hope you have a great day! 😊`,
+        `Dear ${name}, life is better when good people are around. Stay happy and keep smiling! 🌸`,
+        `${name}, just a little reminder: your kindness and good energy can make someone's day better. ✨`,
+        `Hey ${name}! 😂 Keep smiling, keep laughing and keep making great memories! ❤️`
+    ];
+
+    $("messageResult").classList.remove("hidden");
+
+    $("messageResult").innerHTML=
+        `<div class="bigEmoji">💌</div>
+         <div>${randomItem(messages)}</div>`;
+
+    $("copyMessage").classList.remove("hidden");
+}
+
+
+/* =========================
+   QUOTES
+========================= */
+
+const quotes=[
+    "Good friendships turn ordinary moments into great memories. ❤️",
+    "A real friend adds a little sunshine to your day. ☀️",
+    "Respect, trust and laughter make a strong connection. ✨",
+    "The best memories are often made during simple conversations. 🌸",
+    "A kind message can make a normal day feel special. 💌",
+    "Great friendships grow through time, trust and understanding. 🌱",
+    "Laugh together, support each other and enjoy the little moments. 😊",
+    "Good people make good memories. ❤️"
+];
+
+function newQuote(){
+
+    $("quoteResult").innerHTML=`
+        <div class="bigEmoji">🌹</div>
+        <div class="quote">
+            "${randomItem(quotes)}"
+        </div>
+    `;
+}
+
+
+/* =========================
+   FUNNY MESSAGES
+========================= */
+
+const funny=[
+    "Friendship level: online but replying after 3 business days. 😂",
+    "Best friends don't need a plan. They need snacks. 🍕😂",
+    "Our friendship has unlimited memes and limited seriousness. 🤣",
+    "If friendship had a battery, ours would be on 200%. 🔋😂",
+    "We are not lazy. We are professionally relaxed. 😎",
+    "A good friend knows all your weird jokes and still stays. 😂",
+    "Friendship rule #1: Never let your friend eat the last pizza slice. 🍕"
+];
+
+function newFunny(){
+
+    $("funnyResult").innerHTML=`
+        <div class="bigEmoji">😂</div>
+        <div class="quote">
+            "${randomItem(funny)}"
+        </div>
+    `;
+}
+
+
+/* =========================
+   SPIN WHEEL
+========================= */
+
+const wheelChoices=[
+    "🎬 Movie",
+    "🎮 Game",
+    "🍕 Pizza",
+    "🎵 Music",
+    "😂 Memes",
+    "📚 Study",
+    "🚶 Walk",
+    "💬 Chat"
+];
+
+let wheelRotation=0;
+
+function spinWheel(){
+
+    wheelRotation+=
+        1440+
+        Math.floor(Math.random()*360);
+
+    $("wheelCircle").style.transform=
+        `rotate(${wheelRotation}deg)`;
+
+    setTimeout(()=>{
+
+        const choice=randomItem(wheelChoices);
+
+        $("wheelResult").innerHTML=
+            `<div class="bigEmoji">🎉</div>
+             <b>Your choice:</b><br>${choice}`;
+
+        heartRain();
+
+    },1900);
+}
+
+
+/* =========================
+   SURPRISE BOX
+========================= */
+
+const surprises=[
+    "🌟 Today is a good day to make a new memory!",
+    "❤️ Send a kind message to a friend.",
+    "😂 Share a funny meme with someone.",
+    "🎮 Take a fun gaming break.",
+    "📚 Finish one small study goal today!",
+    "🌸 Smile — small positive moments matter.",
+    "💌 Tell a friend something nice.",
+    "🏆 Believe in your progress!"
+];
+
+function openSurprise(){
+
+    const item=randomItem(surprises);
+
+    $("surpriseBox").innerHTML=`
+        <div class="bigEmoji">🎉</div>
+        <p>${item}</p>
+    `;
+
+    heartRain();
+}
+
+
+/* =========================
+   PERSONALITY
+========================= */
+
+function personality(type){
+
+    const results={
+        quiet:[
+            "🌙 Quiet & Thoughtful",
+            "You value calm conversations, trust and meaningful friendships."
+        ],
+        funny:[
+            "😂 Funny & Energetic",
+            "You bring humour and positive energy into your friendships."
+        ],
+        caring:[
+            "❤️ Caring & Supportive",
+            "You like helping people and making sure your friends feel supported."
+        ],
+        adventure:[
+            "🌎 Adventure Lover",
+            "You enjoy new experiences, activities and making exciting memories."
+        ]
+    };
+
+    const r=results[type];
+
+    $("personalityResult").classList.remove("hidden");
+
+    $("personalityResult").innerHTML=`
+        <div class="bigEmoji">${r[0].split(" ")[0]}</div>
+        <h2>${r[0]}</h2>
+        <p>${r[1]}</p>
+    `;
+}
+
+
+/* =========================
+   COPY / SHARE
+========================= */
+
+function copyText(id){
+
+    const text=$(id).innerText;
+
+    if(navigator.clipboard){
+
+        navigator.clipboard.writeText(text);
+
+        showToast("Copied! 📋");
+
+    }else{
+
+        showToast("Copy supported nahi hai.");
+
+    }
+}
+
+function shareText(text){
+
+    if(navigator.share){
+
+        navigator.share({
+            title:"FriendMatch ❤️",
+            text:text
+        });
+
+    }else if(navigator.clipboard){
+
+        navigator.clipboard.writeText(text);
+
+        showToast("Result copy ho gaya! 📋");
+
+    }else{
+
+        alert(text);
+
+    }
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+function toggleDark(){
+
+    document.body.classList.toggle("dark");
+
+    const dark=
+        document.body.classList.contains("dark");
+
+    localStorage.setItem(
+        "friendmatchDark",
+        dark ? "yes":"no"
+    );
+
+    showToast(
+        dark ? "Dark Mode ON 🌙":"Light Mode ON ☀️"
+    );
+}
+
+if(localStorage.getItem("friendmatchDark")==="yes"){
+    document.body.classList.add("dark");
+}
+
+
+/* =========================
+   HEART ANIMATION
+========================= */
+
+function heartRain(){
+
+    for(let i=0;i<12;i++){
+
+        const heart=document.createElement("div");
+
+        heart.className="hearts";
+
+        heart.innerText=
+            randomItem(["❤️","💖","💕","✨","💗"]);
+
+        heart.style.left=
+            Math.random()*100+"vw";
+
+        heart.style.bottom=
+            "10px";
+
+        heart.style.animationDelay=
+            (Math.random()*.5)+"s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },2200);
+    }
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+function showInfo(){
+
+    alert(
+`❤️ FriendMatch
+
+Friendship, crush, love-vibe aur fun entertainment website.
+
+✨ 1100+ question pool
+🎯 7 random questions
+❤️ Love Story
+💘 Fun Crush Meter
+💌 Cute Messages
+🌹 Quotes
+😂 Funny Messages
+🎡 Spin Wheel
+🎁 Surprise Box
+🎭 Personality
+🌙 Dark Mode
+📤 Share
+
+All results are for fun and entertainment.`
+    );
+}
+
+</script>
+
+</body>
+</html>
